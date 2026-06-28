@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kashflow-tech - Solutions SaaS pour l'Afrique francophone</title>
+  <meta name="description" content="Kashflow-tech construit des solutions SaaS modernes pour les entrepreneurs et PME d'Afrique francophone." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0f1117;
+      --ink-soft: #4a4f5e;
+      --paper: #f7f6f2;
+      --white: #ffffff;
+      --accent: #1a6b3c;
+      --accent-light: #e8f5ee;
+      --accent2: #f59e0b;
+      --border: #e2e0da;
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(247, 246, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-contact {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1.5px solid var(--accent);
+      padding: 6px 16px;
+      border-radius: 999px;
+      transition: all 0.2s;
+    }
+
+    .nav-contact:hover {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--ink-soft);
+      max-width: 560px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover { background: #155c33; transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--ink); }
+
+    /* STATS */
+    .stats-bar {
+      background: var(--ink);
+      color: var(--white);
+      padding: 40px 24px;
+    }
+
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 32px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--accent2);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* SECTION */
+    section {
+      padding: 96px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin-bottom: 56px;
+      line-height: 1.7;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-accent, var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: var(--card-accent, var(--accent));
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .project-card:hover::before { transform: scaleX(1); }
+
+    .project-card.batitrack { --card-accent: #1a6b3c; }
+    .project-card.doctia { --card-accent: #2563eb; }
+    .project-card.fonciago { --card-accent: #d97706; }
+
+    .project-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    .project-card.batitrack .project-icon { background: #e8f5ee; }
+    .project-card.doctia .project-icon { background: #eff6ff; }
+    .project-card.fonciago .project-icon { background: #fffbeb; }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .project-card.batitrack .project-tag { background: var(--accent-light); color: var(--accent); }
+    .project-card.doctia .project-tag { background: #eff6ff; color: #2563eb; }
+    .project-card.fonciago .project-tag { background: #fffbeb; color: #d97706; }
+
+    .project-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .project-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .project-features li {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-features li::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--card-accent, var(--accent));
+      flex-shrink: 0;
+    }
+
+    .project-status {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* MISSION */
+    .mission-block {
+      background: var(--ink);
+      border-radius: 24px;
+      padding: 64px 48px;
+      color: var(--white);
+    }
+
+    .mission-block .section-eyebrow { color: var(--accent2); }
+    .mission-block .section-title { color: var(--white); }
+    .mission-block .section-sub { color: rgba(255,255,255,0.65); margin-bottom: 0; }
+
+    /* STACK */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+    }
+
+    .stack-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 12px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      transition: all 0.2s;
+    }
+
+    .stack-item:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .stack-item .stack-emoji { font-size: 1.2rem; display: block; margin-bottom: 6px; }
+
+    /* CONTACT */
+    .contact-block {
+      text-align: center;
+      padding: 80px 24px;
+    }
+
+    .contact-block .section-title { margin-bottom: 12px; }
+    .contact-block .section-sub { margin: 0 auto 36px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.85rem;
+    }
+
+    footer strong { color: var(--white); }
+
+    /* DIVIDER */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .hero { padding: 100px 20px 60px; }
+      .mission-block { padding: 40px 24px; }
+      section { padding: 64px 20px; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Kashflow<span>-tech</span></a>
+    <a href="mailto:kashflowtech@gmail.com" class="nav-contact">Nous contacter</a>
+  </nav>
+
+  <!-- HERO -->
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;">
+    <div class="hero">
+      <div class="hero-eyebrow">Studio SaaS - Afrique francophone</div>
+      <h1>Des outils qui <em>fonctionnent</em><br>pour ceux qui construisent.</h1>
+      <p class="hero-sub">
+        Kashflow-tech conçoit et développe des solutions SaaS modernes
+        pour les entrepreneurs, PME et professionnels d'Afrique francophone.
+        Mobile-first, fiables, et pensés pour le terrain.
+      </p>
+      <div class="hero-cta">
+        <a href="#projets" class="btn-primary">
+          Voir nos projets
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:kashflowtech@gmail.com" class="btn-secondary">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Produits SaaS en développement</div>
+      </div>
+      <div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Pays cibles en Afrique de l'Ouest</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Mobile-first et PWA</div>
+      </div>
+      <div>
+        <div class="stat-num">CI</div>
+        <div class="stat-label">Cote d'Ivoire - marche prioritaire</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJETS -->
+  <section id="projets">
+    <div class="section-eyebrow">Nos produits</div>
+    <h2 class="section-title">Trois solutions,<br>un meme niveau d'exigence.</h2>
+    <p class="section-sub">
+      Chaque produit repond a un besoin reel identifie sur le terrain,
+      avec une approche mobile-first adaptee aux usages africains.
+    </p>
+
+    <div class="projects-grid">
+
+      <!-- BATITRACK -->
+      <div class="project-card batitrack">
+        <div class="project-icon">🏗️</div>
+        <span class="project-tag">BTP</span>
+        <div class="project-name">BatiTrack</div>
+        <p class="project-desc">
+          Application de suivi de chantier pour les PME du BTP en Afrique de l'Ouest.
+          Gerez vos projets, budgets, equipes et incidents depuis votre telephone.
+        </p>
+        <ul class="project-features">
+          <li>Suivi en temps reel des chantiers</li>
+          <li>Gestion des phases et budgets</li>
+          <li>Messagerie et alertes WhatsApp</li>
+          <li>Rapports PDF et mode hors-ligne</li>
+        </ul>
+        <div class="project-status">
+          <span class="status-dot"></span>
+          En production - batitrack.kashflow-tech.com
+        </div>
+      </div>
+
+      <!-- DOCTIA -->
+      <div class="project-card doctia">
+        <div class="project-icon">🏥</div>
+        <span class="project-tag">Sante</span>
+        <div class="project-name">Doctia</div>
+        <p class="project-desc">
+          Plateforme de gestion de cliniques et cabinets medicaux.
+          Patients, dossiers, rendez-vous et facturation centralises dans une seule application.
+        </p>
+        <ul class="project-features">
+          <li>Dossiers patients numeriques</li>
+          <li>Gestion multi-praticiens</li>
+          <li>Generation de fiches PDF</li>
+          <li>Tableau de bord administratif</li>
+        </ul>
+        <div class="project-status">
+          <span class="status-dot"></span>
+          En production - doctia.kashflow-tech.com
+        </div>
+      </div>
+
+      <!-- FONCIAGO -->
+      <div class="project-card fonciago">
+        <div class="project-icon">🏘️</div>
+        <span class="project-tag">Immobilier</span>
+        <div class="project-name">FonciaGo</div>
+        <p class="project-desc">
+          Plateforme de mise en relation securisee pour l'achat et la vente
+          de terrains en Cote d'Ivoire. Verification documentaire, score de confiance
+          et messagerie integree.
+        </p>
+        <ul class="project-features">
+          <li>Verification IA des documents fonciers</li>
+          <li>Score de confiance vendeur public</li>
+          <li>Messagerie securisee integree</li>
+          <li>Carte interactive des annonces</li>
+        </ul>
+        <div class="project-status">
+          <span class="status-dot"></span>
+          En developpement - lancement prevu 2026
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MISSION -->
+  <section>
+    <div class="mission-block">
+      <div class="section-eyebrow">Notre mission</div>
+      <h2 class="section-title" style="max-width:600px;">
+        Combler le retard numerique par des outils qui s'adaptent au contexte local.
+      </h2>
+      <p class="section-sub" style="margin-top:16px;">
+        Kashflow-tech part d'un constat simple : les logiciels disponibles sur le marche
+        africain sont soit trop complexes, soit inadaptes aux realites locales.
+        Nos produits sont construits depuis le terrain, pour le terrain,
+        avec des contraintes reelles comme priorite.
+      </p>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section>
+    <div class="section-eyebrow">Technologies</div>
+    <h2 class="section-title">Une stack moderne,<br>au service de la fiabilite.</h2>
+    <p class="section-sub">
+      Chaque produit est construit sur une base technique solide,
+      deployee dans le cloud et optimisee pour les reseaux mobiles africains.
+    </p>
+    <div class="stack-grid">
+      <div class="stack-item"><span class="stack-emoji">⚡</span>Next.js 15</div>
+      <div class="stack-item"><span class="stack-emoji">⚛️</span>React 19</div>
+      <div class="stack-item"><span class="stack-emoji">🔷</span>TypeScript</div>
+      <div class="stack-item"><span class="stack-emoji">🎨</span>Tailwind CSS</div>
+      <div class="stack-item"><span class="stack-emoji">🗄️</span>Supabase</div>
+      <div class="stack-item"><span class="stack-emoji">▲</span>Vercel</div>
+      <div class="stack-item"><span class="stack-emoji">🤖</span>Claude AI</div>
+      <div class="stack-item"><span class="stack-emoji">📱</span>PWA</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section class="contact-block">
+    <div class="section-eyebrow">Contact</div>
+    <h2 class="section-title">Une idee ? Un projet ?<br>Parlons-en.</h2>
+    <p class="section-sub">
+      Nous sommes ouverts aux collaborations, partenariats et retours
+      d'utilisateurs potentiels sur nos produits en cours.
+    </p>
+    <a href="mailto:kashflowtech@gmail.com" class="btn-primary" style="margin:0 auto;">
+      kashflowtech@gmail.com
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      &copy; 2026 <strong>Kashflow-tech</strong> - SACKO Allassane -
+      SIREN 105 124 655 - Villiers-sur-Marne, France
+    </p>
+  </footer>
+
+</body>
+</html>
